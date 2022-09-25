@@ -22,7 +22,7 @@ public class Sleep {
     private LocalDateTime endTime;
 
     @Column(name="sleepType")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private SleepType sleepType;
 
     @ManyToOne
