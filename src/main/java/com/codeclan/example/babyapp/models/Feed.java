@@ -1,7 +1,9 @@
 package com.codeclan.example.babyapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="feeds")
@@ -13,20 +15,29 @@ public class Feed {
     private Long id;
 
     @Column
-    private LocalTime time;
+    private LocalDateTime time;
     @Column
     private double volume;
 
     @ManyToOne
     @JoinColumn(name="baby_id")
+    @JsonIgnoreProperties({"feeds", "sleeps"})
     private Baby baby;
 
     public Feed() {
     }
 
-    public Feed(LocalTime time, double volume, Baby baby) {
+    public Feed(LocalDateTime time, double volume, Baby baby) {
         this.time = time;
         this.volume = volume;
+        this.baby = baby;
+    }
+
+    public Baby getBaby() {
+        return baby;
+    }
+
+    public void setBaby(Baby baby) {
         this.baby = baby;
     }
 
@@ -38,11 +49,11 @@ public class Feed {
         this.id = id;
     }
 
-    public LocalTime getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

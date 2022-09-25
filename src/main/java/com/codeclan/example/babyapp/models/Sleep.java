@@ -1,6 +1,9 @@
 package com.codeclan.example.babyapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -13,23 +16,24 @@ public class Sleep {
     private Long id;
 
     @Column
-    private LocalTime startTime;
+    private LocalDateTime startTime;
 
     @Column
-    private LocalTime endTime;
+    private LocalDateTime endTime;
 
     @Column(name="sleepType")
+    @Enumerated(EnumType.ORDINAL)
     private SleepType sleepType;
 
     @ManyToOne
     @JoinColumn(name="baby_id")
+    @JsonIgnoreProperties({"feeds", "sleeps"})
     private Baby baby;
 
     public Sleep() {
     }
 
-    public Sleep(Long id, LocalTime startTime, LocalTime endTime, SleepType sleepType, Baby baby) {
-        this.id = id;
+    public Sleep(LocalDateTime startTime, LocalDateTime endTime, SleepType sleepType, Baby baby) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.sleepType = sleepType;
@@ -44,19 +48,19 @@ public class Sleep {
         this.id = id;
     }
 
-    public LocalTime getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalTime getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
