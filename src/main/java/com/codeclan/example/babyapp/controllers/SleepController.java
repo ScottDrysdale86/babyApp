@@ -16,15 +16,18 @@ public class SleepController {
     @Autowired
     SleepRepository sleepRepo;
 
+//    get all sleep data
     @GetMapping(value="/sleeps")
     public ResponseEntity<List<Sleep>> getAllBabies(){
         return new ResponseEntity<>(sleepRepo.findAll(), HttpStatus.OK);
     }
 
+//    get specific sleep entry
     @GetMapping(value="/sleeps/{id}")
     public ResponseEntity getSleep(@PathVariable Long id){
         return new ResponseEntity(sleepRepo.findById(id),HttpStatus.OK);
     }
+//    add a new sleep
     @PostMapping(value = "/sleeps")
     public ResponseEntity<Sleep> postSleep(@RequestBody Sleep sleep){
         sleepRepo.save(sleep);

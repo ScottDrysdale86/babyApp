@@ -17,15 +17,19 @@ public class FeedController {
     @Autowired
     FeedRepository feedRepo;
 
+//    get all feeds
     @GetMapping(value="/feeds")
     public ResponseEntity<List<Feed>> getAllFeeds(){
         return new ResponseEntity<>(feedRepo.findAll(), HttpStatus.OK);
     }
+
+//    get a feed by id
     @GetMapping(value="/feeds/{id}")
     public ResponseEntity getFeed(@PathVariable Long id){
         return new ResponseEntity(feedRepo.findById(id),HttpStatus.OK);
     }
 
+//    add a feed
     @PostMapping(value = "/feeds")
     public ResponseEntity<Feed> postFeed(@RequestBody Feed feed){
         feedRepo.save(feed);

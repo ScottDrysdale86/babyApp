@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
+//USed to set up the db for first run. Comment out for all other runs
 @Component
 public class DataLoader implements ApplicationRunner {
     public DataLoader() {
