@@ -35,4 +35,12 @@ public class FeedController {
         feedRepo.save(feed);
         return new ResponseEntity<>(feed, HttpStatus.CREATED);
     }
+
+//   update feed
+    @PutMapping(value = "/feeds/{id}")
+    public ResponseEntity updateFeed(@RequestBody Feed feed, @PathVariable Long id){
+        feedRepo.save(feed);
+        return new ResponseEntity<>(feed,HttpStatus.OK);
+    }
+
 }
