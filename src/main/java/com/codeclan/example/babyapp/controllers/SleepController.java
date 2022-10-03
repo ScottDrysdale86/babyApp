@@ -42,4 +42,10 @@ public class SleepController {
         return new ResponseEntity<>(sleep,HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "/sleeps/{id}")
+    public ResponseEntity deleteFeed(@PathVariable Long id) {
+        sleepRepo.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
