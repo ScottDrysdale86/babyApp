@@ -21,7 +21,7 @@ public class Feed {
 
     @ManyToOne
     @JoinColumn(name="baby_id")
-    @JsonIgnoreProperties({"feeds", "sleeps"})
+    @JsonIgnoreProperties({"feeds", "sleeps", "temperatures"})
     private Baby baby;
 
     public Feed() {
