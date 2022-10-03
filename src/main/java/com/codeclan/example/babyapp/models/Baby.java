@@ -29,6 +29,9 @@ public class Baby {
     @OneToMany(mappedBy = "baby")
     @JsonIgnoreProperties({"baby"})
     private List<Feed> feeds;
+    @OneToMany(mappedBy = "baby")
+    @JsonIgnoreProperties({"baby"})
+    private List<Temperature> temperatures;
 
 
     public Baby() {
@@ -39,6 +42,7 @@ public class Baby {
         this.birthdate = birthdate;
         this.sleeps = new ArrayList<>();
         this.feeds = new ArrayList<>();
+        this.temperatures = new ArrayList<>();
     }
 
     public Long getId() {
@@ -71,6 +75,14 @@ public class Baby {
 
     public void setSleeps(List<Sleep> sleeps) {
         this.sleeps = sleeps;
+    }
+
+    public List<Temperature> getTemperatures() {
+        return temperatures;
+    }
+
+    public void setTemperatures(List<Temperature> temperatures) {
+        this.temperatures = temperatures;
     }
 
     public List<Feed> getFeeds() {

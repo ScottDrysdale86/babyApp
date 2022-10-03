@@ -1,12 +1,10 @@
 package com.codeclan.example.babyapp.components;
 
-import com.codeclan.example.babyapp.models.Baby;
-import com.codeclan.example.babyapp.models.Feed;
-import com.codeclan.example.babyapp.models.Sleep;
-import com.codeclan.example.babyapp.models.SleepType;
+import com.codeclan.example.babyapp.models.*;
 import com.codeclan.example.babyapp.repositories.BabyRepository;
 import com.codeclan.example.babyapp.repositories.FeedRepository;
 import com.codeclan.example.babyapp.repositories.SleepRepository;
+import com.codeclan.example.babyapp.repositories.TemperatureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -30,6 +28,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     FeedRepository feedRepo;
+
+    @Autowired
+    TemperatureRepository tempRepo;
 
 
     @Override
@@ -57,5 +58,13 @@ public class DataLoader implements ApplicationRunner {
         sleepRepo.save(sleep3);
         Sleep sleep4 = new Sleep((LocalDateTime.of(2022, Month.SEPTEMBER, 24, 19, 30)),(LocalDateTime.of(2022, Month.SEPTEMBER, 25, 05, 00)), SleepType.NIGHT, georgia);
         sleepRepo.save(sleep4);
+
+
+        Temperature temp1 = new Temperature((LocalDateTime.of(2022, Month.OCTOBER, 3, 11, 30)), 34.99, jacob);
+        Temperature temp2 = new Temperature((LocalDateTime.of(2022, Month.OCTOBER, 3, 11, 30)), 31.2222, georgia);
+        Temperature temp3 = new Temperature((LocalDateTime.of(2022, Month.OCTOBER, 2, 11, 30)), 33.3333, jacob);
+        tempRepo.save(temp1);
+        tempRepo.save(temp2);
+        tempRepo.save(temp3);
     }
 }
