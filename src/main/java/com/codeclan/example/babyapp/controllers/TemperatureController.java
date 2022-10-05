@@ -33,15 +33,15 @@ public class TemperatureController {
 
     //   update feed
     @PutMapping(value = "/temperatures/{id}")
-    public ResponseEntity updateFeed(@RequestBody Temperature temp, @PathVariable Long id){
+    public ResponseEntity updateTemp(@RequestBody Temperature temp, @PathVariable Long id){
         tempRepo.save(temp);
         return new ResponseEntity<>(temp,HttpStatus.OK);
     }
 
 
     @DeleteMapping(value = "/temperatures/{id}")
-    public ResponseEntity deleteFeed(@PathVariable Long id) {
+    public ResponseEntity deleteTemp(@PathVariable Long id) {
         tempRepo.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(id,HttpStatus.OK);
     }
 }

@@ -45,7 +45,7 @@ public class SleepController {
     @DeleteMapping(value = "/sleeps/{id}")
     public ResponseEntity deleteFeed(@PathVariable Long id) {
         sleepRepo.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(id,HttpStatus.OK);
     }
 
 }
